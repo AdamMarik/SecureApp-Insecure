@@ -2,7 +2,6 @@ package com.bmiapp.test;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,22 +22,27 @@ public class SignupTest {
             // Open the signup page
             driver.get("http://localhost:8080/BMIcalcApp/signup.jsp");
 
-            // Fill out the form
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-            WebElement csrfElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.name("csrfToken")));
-            csrfElement.getAttribute("value");
-
-
             driver.findElement(By.id("username")).sendKeys("test");
             driver.findElement(By.id("password")).sendKeys("testing1234");
             driver.findElement(By.id("confirmPassword")).sendKeys("testing1234");
 
-            // Inject the CSRF token into the request
-            //.findElement(By.name("csrfToken")).sendKeys(csrfToken);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             // Submit the form
-            driver.findElement(By.xpath("//button[text()='Sign Up']")).click();
+            driver.findElement(By.xpath("//button[text()='Signup']")).click();
 
+            // Wait for the results
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.urlToBe("http://localhost:8080/BMIcalcApp/signup"));
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("Signup test passed!");
 
         } catch (Exception e) {

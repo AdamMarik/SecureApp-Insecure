@@ -9,7 +9,7 @@
         <label for="weight">Weight (kg):</label>
         <input type="number" id="weight" name="weight" step="0.1" required><br><br>
 
-        <label for="height">Height (m):</label>
+        <label for="height">Height (cm):</label>
         <input type="number" id="height" name="height" step="0.01" required><br><br>
 
         <label for="age">Age:</label>
@@ -29,11 +29,13 @@
     <br>
         <a href="login.jsp"><button type="button">Login</button></a>
         <a href="signup.jsp"><button type="button">Signup</button></a>
-    </br>
-    </br>
+
+    <br>
+    <br>
+
     <form action="search" method="get">
-            <input type="text" name="query" placeholder="Enter search" required>
-            <button type="submit">Search</button>
+      <input type="text" name="query" placeholder="Enter username to see progress" required>
+       <button type="submit">Search</button>
     </form>
 </body>
 </html>

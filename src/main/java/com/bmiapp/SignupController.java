@@ -25,7 +25,7 @@ public class SignupController extends HttpServlet {
         try {
             UserDAO.registerUser(username, password);
             request.setAttribute("success", "Account created successfully. Please login.");
-            request.getRequestDispatcher("signup.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } catch (Exception e) {
             request.setAttribute("error", "Username already exists. Please try a different one.");
             request.getRequestDispatcher("signup.jsp").forward(request, response);
